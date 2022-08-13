@@ -1,0 +1,5 @@
+Не сдали standup:
+{{ $i := 0 }}
+{{- range $user := . }}
+{{ $i = add $i 1 }}{{ $i }}. @{{ index $user.Username }}: {{ $user.Missed -}}
+{{- end }}

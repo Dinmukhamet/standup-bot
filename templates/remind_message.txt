@@ -1,0 +1,5 @@
+Сдайте standup,
+{{ $i := 0}}
+{{ range . }}
+{{ $i = add $i 1 }}{{$i}}. @{{ .Username }}
+{{ end }}
