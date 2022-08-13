@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -49,8 +50,8 @@ func main() {
 		log.Fatalf("Error loading .env file")
 	}
 
-	os.Setenv("TZ", "Asia/Bishkek")
-	l, _ := time.LoadLocation("Asia/Bishkek")
+	os.Setenv("TZ", constants.DEFAULT_TIMEZONE)
+	l, _ := time.LoadLocation(constants.DEFAULT_TIMEZONE)
 	time.Local = l
 	constants.LOCATION = l
 
@@ -61,7 +62,8 @@ func main() {
 
 	startScheduler(*bot)
 
-	err = mgm.SetDefaultConfig(nil, "standups", options.Client().ApplyURI("mongodb://0.0.0.0:27017"))
+	mongoURI := fmt.Sprintf("mongodb://%s:27017", os.Getenv("MONGO_HOST"))
+	err = mgm.SetDefaultConfig(nil, "standups", options.Client().ApplyURI(mongoURI))
 	if err != nil {
 		log.Fatalf("Error connecting to mongo: %s", err.Error())
 	}
