@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  daili-bot:
+    container_name: "daili-bot"
+    build: .
+    depends_on:
+      - daili-db
+
+  daili-db:
+    image: mvertes/alpine-mongo
+    container_name: "daili-db"
+    ports:
+      - 27017:27017
