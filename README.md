@@ -11,5 +11,11 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+## TODO
+
+- [ ] Make time of notifications to be editable by admin users
+- [ ] Add messages' and templates' translations
+- [ ] Add the ability for admin users to specify which language to display messages in
+
 ## License
 [MIT](/LICENSE.md)
